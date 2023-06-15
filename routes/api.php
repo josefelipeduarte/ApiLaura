@@ -11,7 +11,7 @@ Route::prefix('auth')->group(function () {
         return request()->user();
     })->middleware('auth:sanctum');
 
-    Route::post('registrar', [AuthController::class, 'create']);
+    Route::post('registrar', [AuthController::class, 'create'])->middleware('admin');
 
     Route::post('/sair', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
