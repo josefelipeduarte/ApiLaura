@@ -86,6 +86,7 @@ class SchoolController extends Controller
 
         $school->update($request->all());
 
+        // ele retorna nada para o cliente, somente altera.
         return response()->noContent();
     }
 
