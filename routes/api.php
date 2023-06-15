@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\Serial_onuController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -21,5 +22,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/{school}', [SchoolController::class, 'update'])->middleware('admin');
         Route::post('/', [SchoolController::class, 'store'])->middleware('admin');
         Route::delete('/{school}', [SchoolController::class, 'destroy'])->middleware('admin');
+    });
+});
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('serial')->group(function () {
+        Route::get('/', [Serial_onuController::class, 'index']);
+        Route::get('/{serial}', [Serial_onuController::class, 'show']);
+        Route::put('/{serial}', [Serial_onuController::class, 'update'])->middleware('admin');
+        Route::post('/', [Serial_onuController::class, 'store'])->middleware('admin');
+        Route::delete('/{serial}', [Serial_onuController::class, 'destroy'])->middleware('admin');
     });
 });

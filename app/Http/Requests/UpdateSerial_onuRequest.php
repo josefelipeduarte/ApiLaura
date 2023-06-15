@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOrganizationRequest extends FormRequest
+class UpdateSerial_onuRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,7 @@ class UpdateOrganizationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
+            'serial_estoque' => [
                 'required',
                 'max:255',
                 'min:3',
