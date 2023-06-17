@@ -27,9 +27,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('serial')->group(function () {
         Route::get('/', [Serial_onuController::class, 'index']);
-        Route::get('/{serial}', [Serial_onuController::class, 'show']);
-        Route::put('/{serial}', [Serial_onuController::class, 'update'])->middleware('admin');
+        Route::get('/pesquisar/{serial}', [Serial_onuController::class, 'pesquisarSerial']);
+        Route::get('/{id_de}', [Serial_onuController::class, 'show']);
+        Route::put('/{id_de}', [Serial_onuController::class, 'update'])->middleware('admin');
         Route::post('/', [Serial_onuController::class, 'store'])->middleware('admin');
-        Route::delete('/{serial}', [Serial_onuController::class, 'destroy'])->middleware('admin');
+        Route::delete('/{id_de}', [Serial_onuController::class, 'destroy'])->middleware('admin');
     });
 });

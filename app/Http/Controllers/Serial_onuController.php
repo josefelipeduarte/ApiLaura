@@ -16,12 +16,25 @@ class Serial_onuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $registros = Serial::all();
 
         return $registros;
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pesquisarSerial(Request $request, $serial)
+    {
+        // Busca o primeiro item onde o campo "serial_estoque" corresponde ao valor fornecido.
+        $serialEnviado = Serial::where('serial_estoque', $serial)->get();
+        // Retorno da resposta
+        return response()->json($serialEnviado);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -54,9 +67,9 @@ class Serial_onuController extends Controller
      */
 
     //Função busca pelo ID de gravação.
-    public function show(Serial $serial)
+    public function show(Serial $id_de)
     {
-        return $serial;
+        return $id_de;
     }
 
     /**
