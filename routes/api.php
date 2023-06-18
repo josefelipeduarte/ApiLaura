@@ -15,15 +15,7 @@ Route::prefix('auth')->group(function () {
 
     Route::post('/sair', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::prefix('schools')->group(function () {
-        Route::get('/', [SchoolController::class, 'index']);
-        Route::get('/{school}', [SchoolController::class, 'show']);
-        Route::put('/{school}', [SchoolController::class, 'update'])->middleware('admin');
-        Route::post('/', [SchoolController::class, 'store'])->middleware('admin');
-        Route::delete('/{school}', [SchoolController::class, 'destroy'])->middleware('admin');
-    });
-});
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('serial')->group(function () {
         Route::get('/', [Serial_onuController::class, 'index']);
@@ -31,6 +23,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/{id_de}', [Serial_onuController::class, 'show']);
         Route::put('/{id_de}', [Serial_onuController::class, 'update'])->middleware('admin');
         Route::post('/', [Serial_onuController::class, 'store'])->middleware('admin');
-        Route::delete('/{id_de}', [Serial_onuController::class, 'destroy'])->middleware('admin');
+        Route::delete('/{serial_delete}', [Serial_onuController::class, 'destroy'])->middleware('admin');
     });
 });

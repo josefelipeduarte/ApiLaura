@@ -101,9 +101,9 @@ class Serial_onuController extends Controller
      * @param \App\Models\Serial $serial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Serial $serial)
+    public function destroy(Serial $serial_delete)
     {
-        $serial->delete();
+        $serial_delete->delete();
 
         return response()->json(null, Response::HTTP_NO_CONTENT);
     }
