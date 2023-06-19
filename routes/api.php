@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/', [Serial_onuController::class, 'index']);
         Route::get('/pesquisar/{serial}', [Serial_onuController::class, 'pesquisarSerial']);
         Route::get('/{id_de}', [Serial_onuController::class, 'show']);
-        Route::put('/{id_de}', [Serial_onuController::class, 'update'])->middleware('admin');
+        Route::put('/{update_id}', [Serial_onuController::class, 'update'])->middleware('admin');
         Route::post('/', [Serial_onuController::class, 'store'])->middleware('admin');
         Route::delete('/{serial_delete}', [Serial_onuController::class, 'destroy'])->middleware('admin');
     });

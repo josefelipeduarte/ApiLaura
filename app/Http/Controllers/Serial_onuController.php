@@ -79,7 +79,7 @@ class Serial_onuController extends Controller
      * @param \App\Models\Serial $serial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Serial $serial)
+    public function update(Request $request, Serial $update_id)
     {
         $request->validate([
             'tipo_onu_estoque' => 'required|string|max:255',
@@ -89,7 +89,7 @@ class Serial_onuController extends Controller
             'user' => 'nullable|string',
         ]);
 
-        $serial->update($request->all());
+        $update_id->update($request->all());
 
         // ele retorna nada para o cliente, somente altera.
         return response()->noContent();
