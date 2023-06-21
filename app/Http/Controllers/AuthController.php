@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+//https://youtu.be/sa3u4Nyrjcg
 class AuthController extends Controller
 {
     public function login(Request $request): JsonResponse

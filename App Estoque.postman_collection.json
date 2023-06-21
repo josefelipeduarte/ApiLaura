@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "545703df-234c-4d51-a5a7-f44f44ae456b",
+		"name": "App Estoque",
+		"description": "App de estoque. Busca auxiliar melhor no dia a dia do controlador de estoque.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27685328"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "logar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"josefelipe@locahost.com\",\r\n    \"password\": \"password\",\r\n    \"device_name\": \"pc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8000/api/auth/entrar"
+					},
+					"response": []
+				},
+				{
+					"name": "sair",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "33|hDMKx2jVfB5CdZZY3KyGPX3DA9VJTowszK1TC3sM"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "https://2fae-187-44-67-207.ngrok-free.app/api/auth/sair"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "32|yarfNmBB6CTMrn6C0cmoeMibkD7yR2g6PVZzYDxS"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "https://2fae-187-44-67-207.ngrok-free.app/api/auth/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "32|yarfNmBB6CTMrn6C0cmoeMibkD7yR2g6PVZzYDxS"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"José Felipe\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://2fae-187-44-67-207.ngrok-free.app/api/auth/registrar"
+					},
+					"response": []
+				}
+			],
+			"description": "Responsável pelos fluxos relacionados diretamente da sessão do usuário."
+		},
+		{
+			"name": "Serial_Onu",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get serial pelo ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": "localhost:8000/api/serial/3"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/api/schools/:id",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"api",
+												"schools",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Escola Primária Sol Nascente\",\n    \"street\": \"Rua das Flores\",\n    \"street_number\": \"123\",\n    \"neighborhood\": \"Centro\",\n    \"city\": \"Cidade Nova\",\n    \"complement\": \"Bloco A\",\n    \"state\": \"Estado X\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update serial pelo ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tipo_onu_estoque\": \"501\",\n    \"motivo_entrega\": \"Devolução a Central\",\n    \"desc_estoque\": \"Devolvida porque bodim é corno\",\n    \"nome_responsavel\": \"Técnico Interno\"\n\n   \n}\n",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "localhost:8000/api/serial/39"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"street\": \"<string>\",\n  \"street_number\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{domain}}/api/schools/:id",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"api",
+												"schools",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Del recebimento pelo ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "localhost:8000/api/serial/2"
+							},
+							"response": [
+								{
+									"name": "No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{domain}}/api/schools/:id",
+											"host": [
+												"{{domain}}"
+											],
+											"path": [
+												"api",
+												"schools",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"description": "Id da escola na tabela schools."
+				},
+				{
+					"name": "Get todos recebimentos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": "localhost:8000/api/serial/"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{domain}}/api/schools"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Stehr-Jerde\",\n            \"street\": \"Trantow Harbors\",\n            \"number\": \"9457\",\n            \"neighborhood\": \"East Rashad\",\n            \"complement\": null,\n            \"city\": \"South Carli\",\n            \"state\": \"PI\",\n            \"created_at\": \"2023-05-23T01:13:54.000000Z\",\n            \"updated_at\": \"2023-05-23T01:13:54.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Barrows, Hickle and Miller\",\n            \"street\": \"Noah Forks\",\n            \"number\": \"2770\",\n            \"neighborhood\": \"West Al\",\n            \"complement\": \"Apt. 030\",\n            \"city\": \"New Max\",\n            \"state\": \"MT\",\n            \"created_at\": \"2023-05-23T01:13:54.000000Z\",\n            \"updated_at\": \"2023-05-23T01:13:54.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:20:59.000000Z\",\n            \"updated_at\": \"2023-05-23T02:20:59.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:21:29.000000Z\",\n            \"updated_at\": \"2023-05-23T02:21:29.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:22:08.000000Z\",\n            \"updated_at\": \"2023-05-23T02:22:08.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:22:30.000000Z\",\n            \"updated_at\": \"2023-05-23T02:22:30.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get por serial",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": "localhost:8000/api/serial/pesquisar/prks00d61234"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{domain}}/api/schools"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Stehr-Jerde\",\n            \"street\": \"Trantow Harbors\",\n            \"number\": \"9457\",\n            \"neighborhood\": \"East Rashad\",\n            \"complement\": null,\n            \"city\": \"South Carli\",\n            \"state\": \"PI\",\n            \"created_at\": \"2023-05-23T01:13:54.000000Z\",\n            \"updated_at\": \"2023-05-23T01:13:54.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Barrows, Hickle and Miller\",\n            \"street\": \"Noah Forks\",\n            \"number\": \"2770\",\n            \"neighborhood\": \"West Al\",\n            \"complement\": \"Apt. 030\",\n            \"city\": \"New Max\",\n            \"state\": \"MT\",\n            \"created_at\": \"2023-05-23T01:13:54.000000Z\",\n            \"updated_at\": \"2023-05-23T01:13:54.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:20:59.000000Z\",\n            \"updated_at\": \"2023-05-23T02:20:59.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:21:29.000000Z\",\n            \"updated_at\": \"2023-05-23T02:21:29.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:22:08.000000Z\",\n            \"updated_at\": \"2023-05-23T02:22:08.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Escola Primária Sol Nascente\",\n            \"street\": \"Rua das Flores\",\n            \"number\": \"123\",\n            \"neighborhood\": \"Centro\",\n            \"complement\": \"Bloco A\",\n            \"city\": \"Cidade Nova\",\n            \"state\": \"GO\",\n            \"created_at\": \"2023-05-23T02:22:30.000000Z\",\n            \"updated_at\": \"2023-05-23T02:22:30.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Registrar Recebimento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo_onu_estoque\": \"501\",\n    \"serial_estoque\": \"prks00D20C67\",\n    \"motivo_entrega\": \"Devolução a Central\",\n    \"desc_estoque\": \"Devolvida porque bodim é corno\",\n    \"nome_responsavel\": \"Técnico Interno\",\n    \"user\": \"José Felipe\"\n   \n}\n\n",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8000/api/serial"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Escola Primária Sol Nascente\",\n    \"street\": \"Rua das Flores\",\n    \"number\": \"123\",\n    \"neighborhood\": \"Centro\",\n    \"city\": \"Cidade Nova\",\n    \"complement\": \"Bloco A\",\n    \"state\": \"GO\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{domain}}/schools"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "CRUD escolas"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "30|tFBjus5uOlWvSAtw0tdQas06J26JnJvhHdri58GU"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if (!pm.environment.get(\"accessToken\")) {",
+					"    const user = pm.environment.get(\"user_email\");",
+					"    const password = pm.environment.get(\"password\");",
+					"",
+					"    pm.sendRequest({",
+					"        url: pm.variables.get(\"domain\") + \"/api/auth/login\",",
+					"        method: \"POST\",",
+					"        header: {",
+					"            \"Accept\": \"application/json\",",
+					"            \"Content-Type\": \"application/json\"",
+					"        },",
+					"        body: {",
+					"            mode: \"raw\",",
+					"            raw: JSON.stringify({",
+					"                \"email\": user,",
+					"                \"password\": password,",
+					"                \"device_name\": \"pc\"",
+					"            })",
+					"        }",
+					"    }, function (err, response) {",
+					"        if (err) {",
+					"            console.error(err);",
+					"            pm.environment.unset(\"accessToken\");",
+					"            pm.test(\"Login failed\", function () {",
+					"                pm.response.to.be.success;",
+					"            });",
+					"            return;",
+					"        } ",
+					"            ",
+					"        var responseBody = response.json();",
+					"        pm.environment.set(\"accessToken\", responseBody.data.token);",
+					"        pm.test(\"Login successful\", function () {",
+					"            pm.response.to.be.success;",
+					"        });",
+					"    });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

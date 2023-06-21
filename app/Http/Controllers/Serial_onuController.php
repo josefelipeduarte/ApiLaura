@@ -62,7 +62,7 @@ class Serial_onuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Serial $serial
+     * @param \App\Models\Serial $id_de
      * @return \Illuminate\Http\Response
      */
 
@@ -76,7 +76,7 @@ class Serial_onuController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Serial $serial
+     * @param \App\Models\Serial $update_id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Serial $update_id)
@@ -86,7 +86,7 @@ class Serial_onuController extends Controller
             'motivo_entrega' => 'required|string|max:100',
             'desc_estoque' => 'required|string|max:255',
             'nome_responsavel' => 'required|string|max:255',
-            'user' => 'nullable|string',
+
         ]);
 
         $update_id->update($request->all());
@@ -98,7 +98,7 @@ class Serial_onuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Serial $serial
+     * @param \App\Models\Serial $serial_delete
      * @return \Illuminate\Http\Response
      */
     public function destroy(Serial $serial_delete)

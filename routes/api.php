@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
     Route::post('/entrar', [AuthController::class, 'login']);
-    Route::get('/user', function () {
-        return request()->user();
-    })->middleware('auth:sanctum');
 
-    Route::post('registrar', [AuthController::class, 'create'])->middleware('admin');
-
-    Route::post('/sair', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+    //é necessário ser admin e estar logado para conseguir registrar alguém.
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::post('/registrar', [AuthController::class, 'create'])->middleware('admin');
+        Route::post('/sair', [AuthController::class, 'logout']);
+        Route::get('/usuario', function () {
+            return request()->user();
+        });
+    });
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
