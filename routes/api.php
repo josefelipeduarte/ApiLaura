@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\Serial_onuController;
+use App\Http\Controllers\Serial_OnuPanelController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -27,4 +28,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/', [Serial_onuController::class, 'store'])->middleware('admin');
         Route::delete('/{serial_delete}', [Serial_onuController::class, 'destroy'])->middleware('admin');
     });
+});
+Route::prefix('serial_painel')->group(function () {
+    Route::get('quantPorTipo/{ano?}', [Serial_OnuPanelController::class, 'quantPorTipo']);
+    Route::get('quantMes/{ano}', [Serial_OnuPanelController::class, 'quantMes']);
 });
