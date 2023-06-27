@@ -6,6 +6,11 @@ use App\Http\Controllers\Serial_onuController;
 use App\Http\Controllers\Serial_OnuPanelController;
 use Illuminate\Support\Facades\Route;
 
+//Rota para teste da API.
+Route::get('/', function () {
+    return response()->json(['status' => 'OK'], 200);
+});
+
 Route::prefix('auth')->group(function () {
     Route::post('/entrar', [AuthController::class, 'login']);
 
