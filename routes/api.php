@@ -5,6 +5,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\Serial_onuController;
 use App\Http\Controllers\Serial_OnuPanelController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 //Rota para teste da API.
 Route::get('/', function () {
@@ -18,9 +19,14 @@ Route::prefix('auth')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/registrar', [AuthController::class, 'create'])->middleware('admin');
         Route::post('/sair', [AuthController::class, 'logout']);
+
+        //Lista somente 1 usuário.
         Route::get('/usuario', function () {
             return request()->user();
         });
+
+        Route::get('/listar', [AuthController::class, 'selectAllUsers']);
+        Route::delete('/deletar/{id_user}', [AuthController::class, 'destroy'])->middleware('admin');
     });
 });
 
